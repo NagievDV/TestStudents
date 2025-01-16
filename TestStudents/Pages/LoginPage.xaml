@@ -11,27 +11,34 @@
     <Grid>
         <StackPanel VerticalAlignment="Center"
                     HorizontalAlignment="Center">
-            
+
             <StackPanel Orientation="Horizontal">
-                
-                <Label Content="Логин" 
-                       VerticalAlignment="Center"
+                <Label Content="Роль:" 
+                       VerticalAlignment="Center" 
                        Margin="5"/>
-                
-                <TextBox Name="tbLogin"
-                         Margin="5"
-                         Tag="Логин:"
+                <ComboBox Name="RoleComboBox" 
+                          Margin="5" 
+                          Width="200">
+                    <ComboBoxItem Content="Student"/>
+                    <ComboBoxItem Content="Teacher"/>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Логин:" 
+                       VerticalAlignment="Center" 
+                       Margin="5"/>
+                <TextBox Name="tbLogin" 
+                         Margin="5" 
                          Width="200"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                
                 <Label Content="Пароль:" 
                        VerticalAlignment="Center" 
                        Margin="5"/>
-                
                 <PasswordBox Name="PasswordBox" 
-                             Margin="5"
+                             Margin="5" 
                              Width="200"/>
             </StackPanel>
 
@@ -39,12 +46,10 @@
                     Content="Войти" 
                     Click="LoginButton_Click" 
                     Margin="5"/>
-
             <Button Name="RegisterButton" 
                     Content="Зарегистрироваться" 
                     Click="RegisterButton_Click"
                     Margin="5"/>
-            
         </StackPanel>
     </Grid>
 </Page>

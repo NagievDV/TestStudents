@@ -4,33 +4,41 @@
     <EntitySetMapping Name="Questions">
       <EntityTypeMapping TypeName="Model.Questions">
         <MappingFragment StoreEntitySet="Questions">
-          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="QuestionType" ColumnName="QuestionType" />
           <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
-          <ScalarProperty Name="AnswerOption1" ColumnName="AnswerOption1" />
-          <ScalarProperty Name="AnswerOption2" ColumnName="AnswerOption2" />
-          <ScalarProperty Name="AnswerOption3" ColumnName="AnswerOption3" />
-          <ScalarProperty Name="AnswerOption4" ColumnName="AnswerOption4" />
+          <ScalarProperty Name="Option1" ColumnName="Option1" />
+          <ScalarProperty Name="Option2" ColumnName="Option2" />
+          <ScalarProperty Name="Option3" ColumnName="Option3" />
+          <ScalarProperty Name="Option4" ColumnName="Option4" />
           <ScalarProperty Name="CorrectAnswer" ColumnName="CorrectAnswer" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TestAnswers">
-      <EntityTypeMapping TypeName="Model.TestAnswers">
-        <MappingFragment StoreEntitySet="TestAnswers">
-          <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
-          <ScalarProperty Name="TestId" ColumnName="TestId" />
-          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
-          <ScalarProperty Name="Answer" ColumnName="Answer" />
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="Model.Students">
+        <MappingFragment StoreEntitySet="Students">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="Group" ColumnName="Group" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Tests">
-      <EntityTypeMapping TypeName="Model.Tests">
-        <MappingFragment StoreEntitySet="Tests">
+    <EntitySetMapping Name="Teachers">
+      <EntityTypeMapping TypeName="Model.Teachers">
+        <MappingFragment StoreEntitySet="Teachers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TestingResults">
+      <EntityTypeMapping TypeName="Model.TestingResults">
+        <MappingFragment StoreEntitySet="TestingResults">
           <ScalarProperty Name="TestId" ColumnName="TestId" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="TestDate" ColumnName="TestDate" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
           <ScalarProperty Name="TestDurationMinutes" ColumnName="TestDurationMinutes" />
           <ScalarProperty Name="TotalQuestions" ColumnName="TotalQuestions" />
           <ScalarProperty Name="CorrectAnswersCount" ColumnName="CorrectAnswersCount" />
@@ -41,13 +49,10 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="Model.Users">
         <MappingFragment StoreEntitySet="Users">
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
           <ScalarProperty Name="Login" ColumnName="Login" />
           <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="FullName" ColumnName="FullName" />
-          <ScalarProperty Name="Role" ColumnName="Role" />
-          <ScalarProperty Name="Group" ColumnName="Group" />
-          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

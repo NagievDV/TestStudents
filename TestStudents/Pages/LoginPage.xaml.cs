@@ -1,18 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace TestStudents.Pages
 {
@@ -25,6 +14,7 @@ namespace TestStudents.Pages
         {
             InitializeComponent();
         }
+
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             string login = tbLogin.Text;
@@ -37,14 +27,23 @@ namespace TestStudents.Pages
 
                 if (user != null)
                 {
-                    if (user.Role == "Student")
+                    var student = context.Students.FirstOrDefault(s => s.Id == user.Id);
+
+                    if (student != null)
                     {
-                        MessageBox.Show("Добро пожаловать, студент!");
+                        MessageBox.Show($"Добро пожаловать, {user.FullName}! Номер билета: {student.CardNumber}");
+                        // TODO Navigate
                     }
-                    else if (user.Role == "Teacher")
+
+                    var teacher = context.Teachers.FirstOrDefault(t => t.Id == user.Id);
+
+                    if (teacher != null)
                     {
-                        MessageBox.Show("Добро пожаловать, преподаватель!");
+                        MessageBox.Show($"Добро пожаловать, {user.FullName}!");
+                        //TODO Navigate
                     }
+
+                    MessageBox.Show("Ошибка: пользователь найден, но не является ни студентом, ни преподавателем.");
                 }
                 else
                 {
@@ -52,6 +51,7 @@ namespace TestStudents.Pages
                 }
             }
         }
+
 
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)

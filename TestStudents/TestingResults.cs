@@ -12,24 +12,18 @@ namespace TestStudents
     using System;
     using System.Collections.Generic;
     
-    public partial class Tests
+    public partial class TestingResults
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tests()
-        {
-            this.TestAnswers = new HashSet<TestAnswers>();
-        }
-    
         public int TestId { get; set; }
-        public System.DateTime Date { get; set; }
-        public int UserId { get; set; }
+        public System.DateTime TestDate { get; set; }
+        public string CardNumber { get; set; }
+        public int QuestionId { get; set; }
+        public string Answer { get; set; }
         public int TestDurationMinutes { get; set; }
         public int TotalQuestions { get; set; }
         public int CorrectAnswersCount { get; set; }
         public string Grade { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TestAnswers> TestAnswers { get; set; }
-        public virtual Users Users { get; set; }
+        public virtual Questions Questions { get; set; }
     }
 }

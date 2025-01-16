@@ -4,14 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="20a41e3896254bf4ac957799396d4195" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.Questions" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.TestAnswers" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Tests" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Users" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="Model.FK__TestAnswe__Quest__4E88ABD4" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__TestAnswe__TestI__4D94879B" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK__Tests__UserId__4AB81AF0" ManuallyRouted="false" />
+      <Diagram DiagramId="9a92d96e254746898867e680039c1d26" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Questions" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Students" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Teachers" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TestingResults" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Users" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK__TestingRe__Quest__787EE5A0" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Students__Id__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Teachers__Id__73BA3083" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

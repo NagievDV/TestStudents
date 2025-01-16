@@ -7,33 +7,40 @@
       <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Questions">
           <Key>
-            <PropertyRef Name="QuestionId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="QuestionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="QuestionType" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="QuestionText" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="AnswerOption1" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="AnswerOption2" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="AnswerOption3" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="AnswerOption4" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="CorrectAnswer" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Option1" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Option2" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Option3" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Option4" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CorrectAnswer" Type="nvarchar" MaxLength="200" Nullable="false" />
         </EntityType>
-        <EntityType Name="TestAnswers">
+        <EntityType Name="Students">
           <Key>
-            <PropertyRef Name="AnswerId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="AnswerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TestId" Type="int" Nullable="false" />
-          <Property Name="QuestionId" Type="int" Nullable="false" />
-          <Property Name="Answer" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="CardNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Group" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Tests">
+        <EntityType Name="Teachers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TestingResults">
           <Key>
             <PropertyRef Name="TestId" />
           </Key>
           <Property Name="TestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Date" Type="datetime" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="TestDate" Type="datetime" Nullable="false" />
+          <Property Name="CardNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="QuestionId" Type="int" Nullable="false" />
+          <Property Name="Answer" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="TestDurationMinutes" Type="int" Nullable="false" />
           <Property Name="TotalQuestions" Type="int" Nullable="false" />
           <Property Name="CorrectAnswersCount" Type="int" Nullable="false" />
@@ -41,68 +48,69 @@
         </EntityType>
         <EntityType Name="Users">
           <Key>
-            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Role" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="Group" Type="nvarchar" MaxLength="50" />
-          <Property Name="CardNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK__TestAnswe__Quest__4E88ABD4">
-          <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
-          <End Role="TestAnswers" Type="Self.TestAnswers" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Questions">
-              <PropertyRef Name="QuestionId" />
-            </Principal>
-            <Dependent Role="TestAnswers">
-              <PropertyRef Name="QuestionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__TestAnswe__TestI__4D94879B">
-          <End Role="Tests" Type="Self.Tests" Multiplicity="1" />
-          <End Role="TestAnswers" Type="Self.TestAnswers" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tests">
-              <PropertyRef Name="TestId" />
-            </Principal>
-            <Dependent Role="TestAnswers">
-              <PropertyRef Name="TestId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Tests__UserId__4AB81AF0">
+        <Association Name="FK__Students__Id__70DDC3D8">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Tests" Type="Self.Tests" Multiplicity="*" />
+          <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Users">
-              <PropertyRef Name="UserId" />
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Tests">
-              <PropertyRef Name="UserId" />
+            <Dependent Role="Students">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Teachers__Id__73BA3083">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Teachers">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6035: В связи "FK__TestingRe__CardN__797309D9" имеются столбцы, которые не являются частью ключа таблицы на первичной стороне связи. Связь исключена.
+        <Association Name="FK__TestingRe__CardN__797309D9" />-->
+        <Association Name="FK__TestingRe__Quest__787EE5A0">
+          <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
+          <End Role="TestingResults" Type="Self.TestingResults" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestingResults">
+              <PropertyRef Name="QuestionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище ModelContainer">
           <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TestAnswers" EntityType="Self.TestAnswers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tests" EntityType="Self.Tests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teachers" EntityType="Self.Teachers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestingResults" EntityType="Self.TestingResults" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__TestAnswe__Quest__4E88ABD4" Association="Self.FK__TestAnswe__Quest__4E88ABD4">
-            <End Role="Questions" EntitySet="Questions" />
-            <End Role="TestAnswers" EntitySet="TestAnswers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__TestAnswe__TestI__4D94879B" Association="Self.FK__TestAnswe__TestI__4D94879B">
-            <End Role="Tests" EntitySet="Tests" />
-            <End Role="TestAnswers" EntitySet="TestAnswers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Tests__UserId__4AB81AF0" Association="Self.FK__Tests__UserId__4AB81AF0">
+          <AssociationSet Name="FK__Students__Id__70DDC3D8" Association="Self.FK__Students__Id__70DDC3D8">
             <End Role="Users" EntitySet="Users" />
-            <End Role="Tests" EntitySet="Tests" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Teachers__Id__73BA3083" Association="Self.FK__Teachers__Id__73BA3083">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Teachers" EntitySet="Teachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TestingRe__Quest__787EE5A0" Association="Self.FK__TestingRe__Quest__787EE5A0">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="TestingResults" EntitySet="TestingResults" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -112,108 +120,113 @@
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Questions">
           <Key>
-            <PropertyRef Name="QuestionId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="QuestionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="QuestionType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="QuestionText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AnswerOption1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AnswerOption2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AnswerOption3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AnswerOption4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CorrectAnswer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="TestAnswers" Relationship="Self.FK__TestAnswe__Quest__4E88ABD4" FromRole="Questions" ToRole="TestAnswers" />
+          <Property Name="Option1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Option2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Option3" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Option4" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CorrectAnswer" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TestingResults" Relationship="Self.FK__TestingRe__Quest__787EE5A0" FromRole="Questions" ToRole="TestingResults" />
         </EntityType>
-        <EntityType Name="TestAnswers">
+        <EntityType Name="Students">
           <Key>
-            <PropertyRef Name="AnswerId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="AnswerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TestId" Type="Int32" Nullable="false" />
-          <Property Name="QuestionId" Type="Int32" Nullable="false" />
-          <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Questions" Relationship="Self.FK__TestAnswe__Quest__4E88ABD4" FromRole="TestAnswers" ToRole="Questions" />
-          <NavigationProperty Name="Tests" Relationship="Self.FK__TestAnswe__TestI__4D94879B" FromRole="TestAnswers" ToRole="Tests" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CardNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Group" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Students__Id__70DDC3D8" FromRole="Students" ToRole="Users" />
         </EntityType>
-        <EntityType Name="Tests">
+        <EntityType Name="Teachers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Teachers__Id__73BA3083" FromRole="Teachers" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="TestingResults">
           <Key>
             <PropertyRef Name="TestId" />
           </Key>
           <Property Name="TestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="TestDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CardNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QuestionId" Type="Int32" Nullable="false" />
+          <Property Name="Answer" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TestDurationMinutes" Type="Int32" Nullable="false" />
           <Property Name="TotalQuestions" Type="Int32" Nullable="false" />
           <Property Name="CorrectAnswersCount" Type="Int32" Nullable="false" />
           <Property Name="Grade" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="TestAnswers" Relationship="Self.FK__TestAnswe__TestI__4D94879B" FromRole="Tests" ToRole="TestAnswers" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Tests__UserId__4AB81AF0" FromRole="Tests" ToRole="Users" />
+          <NavigationProperty Name="Questions" Relationship="Self.FK__TestingRe__Quest__787EE5A0" FromRole="TestingResults" ToRole="Questions" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
-            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Role" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Group" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CardNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Tests" Relationship="Self.FK__Tests__UserId__4AB81AF0" FromRole="Users" ToRole="Tests" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Students" Relationship="Self.FK__Students__Id__70DDC3D8" FromRole="Users" ToRole="Students" />
+          <NavigationProperty Name="Teachers" Relationship="Self.FK__Teachers__Id__73BA3083" FromRole="Users" ToRole="Teachers" />
         </EntityType>
-        <Association Name="FK__TestAnswe__Quest__4E88ABD4">
+        <Association Name="FK__TestingRe__Quest__787EE5A0">
           <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
-          <End Role="TestAnswers" Type="Self.TestAnswers" Multiplicity="*" />
+          <End Role="TestingResults" Type="Self.TestingResults" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Questions">
-              <PropertyRef Name="QuestionId" />
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="TestAnswers">
+            <Dependent Role="TestingResults">
               <PropertyRef Name="QuestionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TestAnswe__TestI__4D94879B">
-          <End Role="Tests" Type="Self.Tests" Multiplicity="1" />
-          <End Role="TestAnswers" Type="Self.TestAnswers" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tests">
-              <PropertyRef Name="TestId" />
-            </Principal>
-            <Dependent Role="TestAnswers">
-              <PropertyRef Name="TestId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Tests__UserId__4AB81AF0">
+        <Association Name="FK__Students__Id__70DDC3D8">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Tests" Type="Self.Tests" Multiplicity="*" />
+          <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Users">
-              <PropertyRef Name="UserId" />
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Tests">
-              <PropertyRef Name="UserId" />
+            <Dependent Role="Students">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Teachers__Id__73BA3083">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Teachers">
+              <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Questions" EntityType="Self.Questions" />
-          <EntitySet Name="TestAnswers" EntityType="Self.TestAnswers" />
-          <EntitySet Name="Tests" EntityType="Self.Tests" />
+          <EntitySet Name="Students" EntityType="Self.Students" />
+          <EntitySet Name="Teachers" EntityType="Self.Teachers" />
+          <EntitySet Name="TestingResults" EntityType="Self.TestingResults" />
           <EntitySet Name="Users" EntityType="Self.Users" />
-          <AssociationSet Name="FK__TestAnswe__Quest__4E88ABD4" Association="Self.FK__TestAnswe__Quest__4E88ABD4">
+          <AssociationSet Name="FK__TestingRe__Quest__787EE5A0" Association="Self.FK__TestingRe__Quest__787EE5A0">
             <End Role="Questions" EntitySet="Questions" />
-            <End Role="TestAnswers" EntitySet="TestAnswers" />
+            <End Role="TestingResults" EntitySet="TestingResults" />
           </AssociationSet>
-          <AssociationSet Name="FK__TestAnswe__TestI__4D94879B" Association="Self.FK__TestAnswe__TestI__4D94879B">
-            <End Role="Tests" EntitySet="Tests" />
-            <End Role="TestAnswers" EntitySet="TestAnswers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Tests__UserId__4AB81AF0" Association="Self.FK__Tests__UserId__4AB81AF0">
+          <AssociationSet Name="FK__Students__Id__70DDC3D8" Association="Self.FK__Students__Id__70DDC3D8">
             <End Role="Users" EntitySet="Users" />
-            <End Role="Tests" EntitySet="Tests" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Teachers__Id__73BA3083" Association="Self.FK__Teachers__Id__73BA3083">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Teachers" EntitySet="Teachers" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -225,33 +238,41 @@
           <EntitySetMapping Name="Questions">
             <EntityTypeMapping TypeName="Model.Questions">
               <MappingFragment StoreEntitySet="Questions">
-                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="QuestionType" ColumnName="QuestionType" />
                 <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
-                <ScalarProperty Name="AnswerOption1" ColumnName="AnswerOption1" />
-                <ScalarProperty Name="AnswerOption2" ColumnName="AnswerOption2" />
-                <ScalarProperty Name="AnswerOption3" ColumnName="AnswerOption3" />
-                <ScalarProperty Name="AnswerOption4" ColumnName="AnswerOption4" />
+                <ScalarProperty Name="Option1" ColumnName="Option1" />
+                <ScalarProperty Name="Option2" ColumnName="Option2" />
+                <ScalarProperty Name="Option3" ColumnName="Option3" />
+                <ScalarProperty Name="Option4" ColumnName="Option4" />
                 <ScalarProperty Name="CorrectAnswer" ColumnName="CorrectAnswer" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TestAnswers">
-            <EntityTypeMapping TypeName="Model.TestAnswers">
-              <MappingFragment StoreEntitySet="TestAnswers">
-                <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
-                <ScalarProperty Name="TestId" ColumnName="TestId" />
-                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
-                <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="Model.Students">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="Group" ColumnName="Group" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Tests">
-            <EntityTypeMapping TypeName="Model.Tests">
-              <MappingFragment StoreEntitySet="Tests">
+          <EntitySetMapping Name="Teachers">
+            <EntityTypeMapping TypeName="Model.Teachers">
+              <MappingFragment StoreEntitySet="Teachers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestingResults">
+            <EntityTypeMapping TypeName="Model.TestingResults">
+              <MappingFragment StoreEntitySet="TestingResults">
                 <ScalarProperty Name="TestId" ColumnName="TestId" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TestDate" ColumnName="TestDate" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
                 <ScalarProperty Name="TestDurationMinutes" ColumnName="TestDurationMinutes" />
                 <ScalarProperty Name="TotalQuestions" ColumnName="TotalQuestions" />
                 <ScalarProperty Name="CorrectAnswersCount" ColumnName="CorrectAnswersCount" />
@@ -262,13 +283,10 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="Model.Users">
               <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Role" ColumnName="Role" />
-                <ScalarProperty Name="Group" ColumnName="Group" />
-                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

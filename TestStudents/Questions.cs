@@ -17,19 +17,19 @@ namespace TestStudents
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Questions()
         {
-            this.TestAnswers = new HashSet<TestAnswers>();
+            this.TestingResults = new HashSet<TestingResults>();
         }
     
-        public int QuestionId { get; set; }
+        public int Id { get; set; }
         public string QuestionType { get; set; }
         public string QuestionText { get; set; }
-        public string AnswerOption1 { get; set; }
-        public string AnswerOption2 { get; set; }
-        public string AnswerOption3 { get; set; }
-        public string AnswerOption4 { get; set; }
+        public string Option1 { get; set; }
+        public string Option2 { get; set; }
+        public string Option3 { get; set; }
+        public string Option4 { get; set; }
         public string CorrectAnswer { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TestAnswers> TestAnswers { get; set; }
+        public virtual ICollection<TestingResults> TestingResults { get; set; }
     }
 }

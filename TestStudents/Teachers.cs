@@ -12,14 +12,10 @@ namespace TestStudents
     using System;
     using System.Collections.Generic;
     
-    public partial class TestAnswers
+    public partial class Teachers
     {
-        public int AnswerId { get; set; }
-        public int TestId { get; set; }
-        public int QuestionId { get; set; }
-        public string Answer { get; set; }
+        public int Id { get; set; }
     
-        public virtual Questions Questions { get; set; }
-        public virtual Tests Tests { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

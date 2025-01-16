@@ -7,8 +7,10 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Регистрация">
+   
     <Grid>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel VerticalAlignment="Center" 
+                    HorizontalAlignment="Center">
 
             <StackPanel Orientation="Horizontal">
                 <Label Content="ФИО:" VerticalAlignment="Center" Width="100" Margin="5"/>
@@ -41,12 +43,27 @@
                 </ComboBox>
             </StackPanel>
 
+            <StackPanel Name="StudentFieldsPanel" Visibility="Collapsed">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Билет:" VerticalAlignment="Center" Width="100" Margin="5"/>
+                    <TextBox Name="CardNumberTextBox"
+                             Width="200"
+                             Margin="5"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Группа:" VerticalAlignment="Center" Width="100" Margin="5"/>
+                    <TextBox Name="GroupTextBox"
+                             Width="200"
+                             Margin="5"/>
+                </StackPanel>
+            </StackPanel>
+
             <Button Name="RegisterButton" 
                     Width="200"
                     Content="Зарегистрироваться"
                     Margin="5"
                     Click="RegisterButton_Click"/>
-            
+
         </StackPanel>
     </Grid>
 </Page>
