@@ -85,6 +85,12 @@
     <Compile Include="Pages\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\StudentPage.xaml.cs">
+      <DependentUpon>StudentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TeacherPage.xaml.cs">
+      <DependentUpon>TeacherPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Questions.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -117,6 +123,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\RegisterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\StudentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TeacherPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

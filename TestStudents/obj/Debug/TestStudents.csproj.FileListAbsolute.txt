@@ -27,3 +27,7 @@ E:\Задания\Горланов\TestStudents\TestStudents\obj\Debug\TestStude
 E:\Задания\Горланов\TestStudents\TestStudents\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
 E:\Задания\Горланов\TestStudents\TestStudents\obj\Debug\Pages\RegisterPage.g.cs
 E:\Задания\Горланов\TestStudents\TestStudents\obj\Debug\Pages\RegisterPage.baml
+E:\Задания\Горланов\TestStudents\TestStudents\obj\Debug\Pages\StudentPage.g.cs
+E:\Задания\Горланов\TestStudents\TestStudents\obj\Debug\Pages\TeacherPage.g.cs
+E:\Задания\Горланов\TestStudents\TestStudents\obj\Debug\Pages\StudentPage.baml
+E:\Задания\Горланов\TestStudents\TestStudents\obj\Debug\Pages\TeacherPage.baml

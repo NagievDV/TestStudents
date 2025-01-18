@@ -20,7 +20,7 @@ namespace TestStudents.Pages
             string login = tbLogin.Text;
             string password = PasswordBox.Password;
 
-            using (var context = Entities.GetContext())
+            using (var context = new Entities())
             {
                 var user = context.Users
                                   .FirstOrDefault(u => u.Login == login && u.Password == password);
@@ -32,7 +32,8 @@ namespace TestStudents.Pages
                     if (student != null)
                     {
                         MessageBox.Show($"Добро пожаловать, {user.FullName}! Номер билета: {student.CardNumber}");
-                        // TODO Navigate
+                        NavigationService.Navigate(new StudentPage());
+                        return;
                     }
 
                     var teacher = context.Teachers.FirstOrDefault(t => t.Id == user.Id);
@@ -40,7 +41,8 @@ namespace TestStudents.Pages
                     if (teacher != null)
                     {
                         MessageBox.Show($"Добро пожаловать, {user.FullName}!");
-                        //TODO Navigate
+                        NavigationService.Navigate(new TeacherPage());
+                        return;
                     }
 
                     MessageBox.Show("Ошибка: пользователь найден, но не является ни студентом, ни преподавателем.");

@@ -12,23 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TestStudents.Pages;
 
-namespace TestStudents
+namespace TestStudents.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для StudentPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class StudentPage : Page
     {
-        public MainWindow()
+        public StudentPage()
         {
             InitializeComponent();
-        }
-
-        private void btnBack_Click(object sender, RoutedEventArgs e)
-        {
-            MainFrame.NavigationService.Navigate(new LoginPage());
         }
     }
 }
