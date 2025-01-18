@@ -31,3 +31,9 @@ E:\Задания\Горланов\TestStudents\TestStudents\obj\Debug\Pages\Stu
 E:\Задания\Горланов\TestStudents\TestStudents\obj\Debug\Pages\TeacherPage.g.cs
 E:\Задания\Горланов\TestStudents\TestStudents\obj\Debug\Pages\StudentPage.baml
 E:\Задания\Горланов\TestStudents\TestStudents\obj\Debug\Pages\TeacherPage.baml
+E:\Задания\Горланов\TestStudents\TestStudents\bin\Debug\TestStudents.exe.manifest
+E:\Задания\Горланов\TestStudents\TestStudents\bin\Debug\TestStudents.application
+E:\Задания\Горланов\TestStudents\TestStudents\obj\Debug\TestStudents.exe.manifest
+E:\Задания\Горланов\TestStudents\TestStudents\obj\Debug\TestStudents.application
+E:\Задания\Горланов\TestStudents\TestStudents\obj\Debug\Pages\TestReport.g.cs
+E:\Задания\Горланов\TestStudents\TestStudents\obj\Debug\Pages\TestReport.baml

@@ -10,6 +10,7 @@
         <Setter Property="FontSize" Value="14pt"/>
         <Setter Property="Padding" Value="5"/>
         <Setter Property="MinWidth" Value="100"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
     </Style>
 
     <Style TargetType="TextBox">
@@ -42,6 +43,14 @@
         <Setter Property="MinWidth" Value="100"/>
     </Style>
 
+    <Style TargetType="TextBlock">
+        <Setter Property="Foreground" Value="#00246B"/>
+        <Setter Property="FontFamily" Value="Cascadia"/>
+        <Setter Property="FontSize" Value="14pt"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="MinWidth" Value="100"/>
+    </Style>
+
     <Style TargetType="ComboBox">
         <Setter Property="Background" Value="#CADCFC"/>
         <Setter Property="BorderBrush" Value="#00246B"/>
@@ -62,6 +71,52 @@
         <Setter Property="FontSize" Value="14pt"/>
         <Setter Property="Padding" Value="5"/>
         <Setter Property="MinWidth" Value="100"/>
+    </Style>
+
+    <Style TargetType="RadioButton">
+        <Setter Property="Background" Value="#CADCFC"/>
+        <Setter Property="BorderBrush" Value="#00246B"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Foreground" Value="#00246B"/>
+        <Setter Property="FontFamily" Value="Cascadia"/>
+        <Setter Property="FontSize" Value="14pt"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="MinWidth" Value="100"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
+    <Style TargetType="DataGrid">
+        <Setter Property="Background" Value="#CADCFC"/>
+        <Setter Property="BorderBrush" Value="#00246B"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Foreground" Value="#00246B"/>
+        <Setter Property="FontFamily" Value="Cascadia"/>
+        <Setter Property="FontSize" Value="14pt"/>
+        <Setter Property="RowBackground" Value="#E6F1FF"/>
+        <Setter Property="AlternatingRowBackground" Value="#D0E8FF"/>
+        <Setter Property="GridLinesVisibility" Value="All"/>
+        <Setter Property="HorizontalGridLinesBrush" Value="#00246B"/>
+        <Setter Property="VerticalGridLinesBrush" Value="#00246B"/>
+    </Style>
+
+    <Style TargetType="DataGridRow">
+        <Setter Property="Background" Value="#E6F1FF"/>
+        <Setter Property="Foreground" Value="#00246B"/>
+        <Setter Property="FontFamily" Value="Cascadia"/>
+        <Setter Property="FontSize" Value="14pt"/>
+        <Setter Property="BorderBrush" Value="#00246B"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+
+    <Style TargetType="DataGridCell">
+        <Setter Property="Background" Value="#E6F1FF"/>
+        <Setter Property="BorderBrush" Value="#00246B"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Foreground" Value="#00246B"/>
+        <Setter Property="FontFamily" Value="Cascadia"/>
+        <Setter Property="FontSize" Value="14pt"/>
+        <Setter Property="Padding" Value="5"/>
     </Style>
 
 </ResourceDictionary>
